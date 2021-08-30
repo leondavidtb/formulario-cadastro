@@ -14,4 +14,12 @@ function validarSenha(senha) {
   }
 }
 
-export { validarCPF, validarSenha };
+function validarTelefone(telefone) {
+  if (telefone.length < 4 || telefone.length > 72) {
+    return { valido: false, texto: "Telefone deve ter 11 digitos." };
+  } else {
+    return { valido: true, texto: "" };
+  }
+}
+
+export { validarCPF, validarSenha, validarTelefone };

@@ -11,11 +11,6 @@ function DadosUsuario({ aoEnviar }) {
 
   const [erros, validarCampos, possoEnviar] = useErros(validacoes);
 
-
-  
-
-  
-
   return (
     <form
       onSubmit={(event) => {

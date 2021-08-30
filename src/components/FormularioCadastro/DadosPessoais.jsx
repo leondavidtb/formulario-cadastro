@@ -7,6 +7,7 @@ function DadosPessoais({ aoEnviar }) {
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [cpf, setCpf] = useState("");
+  const [telefone, setTelefone] = useState();
   const [promocoes, setPromocoes] = useState(true);
   const [novidades, setNovidades] = useState(false);
 
@@ -19,7 +20,7 @@ function DadosPessoais({ aoEnviar }) {
       onSubmit={(event) => {
         event.preventDefault();
         if (possoEnviar()) {
-          aoEnviar({ nome, sobrenome, cpf, novidades, promocoes });
+          aoEnviar({ nome, sobrenome, cpf, telefone, novidades, promocoes });
         }
       }}
     >
@@ -60,6 +61,24 @@ function DadosPessoais({ aoEnviar }) {
         label="CPF"
         variant="outlined"
         margin="normal"
+        type="number"
+        fullWidth
+      />
+
+      <TextField
+        value={telefone}
+        onChange={(event) => {
+          setTelefone(event.target.value);
+        }}
+        onBlur={validarCampos}
+        name="telefone"
+        error={!erros.telefone.valido}
+        helperText={erros.telefone.texto}
+        id="telefone"
+        label="Telefone"
+        variant="outlined"
+        margin="normal"
+        type="number"
         fullWidth
       />
 

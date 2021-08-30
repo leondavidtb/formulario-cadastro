@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 function DadosEntrega({ aoEnviar }) {
   const [cep, setCep] = useState("");
-  const [endereco, setEndereco] = useState("");
+  const [rua, setRua] = useState("");
   const [numero, setNumero] = useState("");
   const [estado, setEstado] = useState("");
   const [cidade, setCidade] = useState("");
@@ -12,9 +12,36 @@ function DadosEntrega({ aoEnviar }) {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        aoEnviar({ cep, endereco, numero, estado, cidade });
+        aoEnviar({ cep, rua, numero, estado, cidade });
       }}
     >
+      <TextField
+        name="rua"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+        id="rua"
+        label="Rua"
+        type="text"
+        value={rua}
+        onChange={(event) => {
+          setRua(event.target.value);
+        }}
+      />
+
+      <TextField
+        name="numero"
+        variant="outlined"
+        margin="normal"
+        id="numero"
+        label="Número"
+        type="number"
+        value={numero}
+        onChange={(event) => {
+          setNumero(event.target.value);
+        }}
+        style={{ width: "100px", marginRight: "15px" }}
+      />
       <TextField
         name="cep"
         variant="outlined"
@@ -26,30 +53,18 @@ function DadosEntrega({ aoEnviar }) {
         onChange={(event) => {
           setCep(event.target.value);
         }}
+        style={{ marginRight: "15px" }}
       />
       <TextField
-        name="endereco"
+        name="cidade"
         variant="outlined"
         margin="normal"
-        fullWidth
-        id="endereco"
-        label="Endereço"
+        id="cidade"
+        label="Cidade"
         type="text"
-        value={endereco}
+        value={cidade}
         onChange={(event) => {
-          setEndereco(event.target.value);
-        }}
-      />
-      <TextField
-        name="numero"
-        variant="outlined"
-        margin="normal"
-        id="numero"
-        label="Número"
-        type="number"
-        value={numero}
-        onChange={(event) => {
-          setNumero(event.target.value);
+          setCidade(event.target.value);
         }}
       />
       <TextField
@@ -64,18 +79,7 @@ function DadosEntrega({ aoEnviar }) {
           setEstado(event.target.value);
         }}
       />
-      <TextField
-        name="cidade"
-        variant="outlined"
-        margin="normal"
-        id="cidade"
-        label="Cidade"
-        type="text"
-        value={cidade}
-        onChange={(event) => {
-          setCidade(event.target.value);
-        }}
-      />
+
       <Button fullWidth variant="contained" color="primary" type="submit">
         Finalizar cadastro
       </Button>

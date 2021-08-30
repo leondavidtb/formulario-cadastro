@@ -5,7 +5,7 @@ import "@fontsource/roboto";
 
 import { Container, Typography } from "@material-ui/core";
 
-import { validarCPF, validarSenha } from "./models/cadastro";
+import { validarCPF, validarSenha, validarTelefone } from "./models/cadastro";
 import ValidacoesCadastro from "./contexts/ValidacoesCadastro";
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
           Formulário de cadastro
         </Typography>
         <ValidacoesCadastro.Provider
-          value={{ cpf: validarCPF, senha: validarSenha }}
+          value={{ cpf: validarCPF, senha: validarSenha, telefone: validarTelefone }}
         >
           <FormularioCadastro aoEnviar={aoEnviarForm} />
         </ValidacoesCadastro.Provider>
